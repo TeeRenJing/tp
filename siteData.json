@@ -7,11 +7,11 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
-        "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
-        "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "wei-xiang": "Wei Xiang",
+        "ren-jing": "Ren Jing",
+        "shyan-yong": "Shyan-Yong",
+        "jing-yu": "Jing Yu",
+        "wei-jie": "Wei Jie"
       },
       "headingKeywords": {}
     },
@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "baymeds-developer-guide": "BayMeds Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -107,14 +107,14 @@
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
-        "ab-3-user-guide": "AB-3 User Guide",
+        "baymeds-v-2103-user-guide": "BayMeds v.2103 User Guide",
         "quick-start": "Quick start",
         "features": "Features",
-        "viewing-help-help": "Viewing help : help",
-        "adding-a-person-add": "Adding a person: add",
+        "viewing-help-help-coming-soon": "Viewing help : help [coming soon]",
+        "adding-a-prescription-add": "Adding a prescription : add",
         "listing-all-persons-list": "Listing all persons : list",
         "editing-a-person-edit": "Editing a person : edit",
-        "locating-persons-by-name-find": "Locating persons by name: find",
+        "locating-persons-by-name-find": "Locating persons by name : find",
         "deleting-a-person-delete": "Deleting a person : delete",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
@@ -131,7 +131,23 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "baymeds-v-2103": "BayMeds v.2103"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/chongweijie29.md",
+      "title": "ChongWeiJie29's Project Portfolio Page",
+      "headings": {
+        "project-baymeds-v-2103": "Project: BayMeds v.2103"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/jingyu987.md",
+      "title": "jingyu987's Project Portfolio Page",
+      "headings": {
+        "project-baymeds-v-2103": "Project: BayMeds v.2103"
       },
       "headingKeywords": {}
     },
@@ -140,6 +156,30 @@
       "title": "John Doe's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/roerere.md",
+      "title": "RoeReRe's Project Portfolio Page",
+      "headings": {
+        "project-baymeds-v-2103": "Project: BayMeds v.2103"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/shyanyong.md",
+      "title": "shyanyong's Project Portfolio Page",
+      "headings": {
+        "project-baymeds-v-2103": "Project: BayMeds v.2103"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/teerenjing.md",
+      "title": "TeeRenJing's Project Portfolio Page",
+      "headings": {
+        "project-baymeds-v-2103": "Project: BayMeds v.2103"
       },
       "headingKeywords": {}
     },
