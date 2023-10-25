@@ -1,0 +1,9 @@
+@startuml
+start
+:User executes list today command;
+:ListTodayParser parses text;
+:ListTodayCommand executes;
+:Update Model's filter to show only today's prescriptions;
+:Show filtered prescriptions;
+stop
+@enduml

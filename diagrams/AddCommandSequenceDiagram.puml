@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":PrescriptionListParser" as PrescriptionListParser LOGIC_COLOR
+participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
+participant "d:AddCommand" as AddCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("add mn/Propranolol d/4 f/Daily ed/20/01/2024")
+activate LogicManager
+
+LogicManager -> PrescriptionListParser : parseCommand(inputCommand)
+activate PrescriptionListParser
+
+create AddCommandParser
+PrescriptionListParser -> AddCommandParser
+activate AddCommandParser
+
+AddCommandParser --> PrescriptionListParser
+deactivate AddCommandParser
+
+PrescriptionListParser -> AddCommandParser : parse(inputArguments)
+activate AddCommandParser
+
+create AddCommand
+AddCommandParser -> AddCommand : AddCommand(propranololPrescription)
+activate AddCommand
+
+AddCommand --> AddCommandParser
+deactivate AddCommand
+
+AddCommandParser --> PrescriptionListParser
+deactivate AddCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+AddCommandParser -[hidden]-> PrescriptionListParser
+destroy AddCommandParser
+
+PrescriptionListParser --> LogicManager
+deactivate PrescriptionListParser
+
+LogicManager -> AddCommand : execute(model)
+activate AddCommand
+
+AddCommand -> Model : addPrescription(propranololPrescription)
+activate Model
+
+Model --> AddCommand
+deactivate Model
+
+create CommandResult
+AddCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddCommand
+deactivate CommandResult
+
+AddCommand --> LogicManager : command result
+deactivate AddCommand
+
+[<--LogicManager : command result
+deactivate LogicManager
+@enduml

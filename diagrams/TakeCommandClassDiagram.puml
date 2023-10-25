@@ -1,0 +1,59 @@
+@startuml TakeCommandClassDiagram
+
+class TakeCommand {
+  - targetIndex: Index
+  - dosesToTake: Int
+  + executeTake(totalStock: Optional<Stock>, consumptionCount: ConsumptionCount): void
+}
+
+abstract class Command {
+  + execute(model: Model): CommandResult
+}
+
+class Index {
+  - ZeroBasedIndex: int
+}
+
+class Dosage {
+  - fullDosage: String
+}
+
+class Model {
+  - prescriptionList: PrescriptionList
+  + getFilteredPrescriptionList(): List<Prescription>
+}
+
+class IsCompletedPredicate {
+  + test(prescription: Prescription): boolean
+}
+
+class Prescription {
+  - totalStock: Optional<Stock>
+  - consumptionCount: ConsumptionCount
+  + getTotalStock(): Optional<Stock>
+  + getConsumptionCount(): ConsumptionCount
+  + getIsCompleted(isCompleted boolean): void
+}
+
+class Stock {
+  - fullStock: String
+  + decrementCount(Count: int): void
+}
+
+class ConsumptionCount {
+  - consumptionCount: String
+  + incrementCount(Count: int): void
+}
+
+Command <|-down- TakeCommand
+Index <-down- TakeCommand
+Dosage <-right- TakeCommand
+Index <-[hidden]- Dosage
+Model <.left. TakeCommand
+IsCompletedPredicate <.left. TakeCommand
+Model <-[hidden]- IsCompletedPredicate
+Prescription <-up- TakeCommand
+Stock <-up- Prescription
+ConsumptionCount <-up- Prescription
+
+@enduml

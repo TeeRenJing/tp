@@ -1,0 +1,9 @@
+@startuml
+start
+:User executes add command;
+:AddCommandParser parses text;
+:AddCommand executes;
+:Add prescription to Model's prescription list;
+:Show all prescriptions;
+stop
+@enduml;

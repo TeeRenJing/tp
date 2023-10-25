@@ -1,0 +1,42 @@
+@startuml EditCommandClassDiagram
+
+!define Command << (C,green) Command >>
+!define Optional << (O,blue) Optional >>
+
+class EditCommand {
+  - index: Index
+  - editPrescriptionDescriptor: EditPrescriptionDescriptor
+  -------------------
+  + EditCommand(index: Index, editPrescriptionDescriptor: EditPrescriptionDescriptor)
+  + execute(model: Model): CommandResult
+}
+
+class EditPrescriptionDescriptor {
+  - name: Name
+  - dosage: Dosage
+  - frequency: Frequency
+  - startDate: Date
+  - endDate: Date
+  - expiryDate: Date
+  - totalStock: Stock
+  - consumptionCount: ConsumptionCount
+  - isCompleted: Boolean
+  - note: Note
+  -------------------
+  + EditPrescriptionDescriptor()
+  + isAnyFieldEdited(): boolean
+  + setName(name: Name)
+  + setDosage(dosage: Dosage)
+  + setFrequency(frequency: Frequency)
+  + setStartDate(startDate: Date)
+  + setEndDate(endDate: Date)
+  + setExpiryDate(expiryDate: Date)
+  + setTotalStock(totalStock: Stock)
+  + setConsumptionCount(consumptionCount: ConsumptionCount)
+  + setIsCompleted(isCompleted: Boolean)
+  + setNote(note: Note)
+}
+
+EditCommand "1" -- "1" EditPrescriptionDescriptor : has
+
+@enduml
