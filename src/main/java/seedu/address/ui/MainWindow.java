@@ -1,6 +1,9 @@
 package seedu.address.ui;
 
 import java.io.IOException;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -38,6 +41,7 @@ public class MainWindow extends UiPart<Stage> {
     private PrescriptionListPanel prescriptionListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ReminderWindow reminderWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -70,6 +74,21 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        reminderWindow = new ReminderWindow();
+
+        ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
+        logger.log(Level.INFO, "Starting reminder thread...");
+        executor.scheduleAtFixedRate(() -> {
+            try {
+                // wait 10 seconds before checking for reminders
+                TimeUnit.SECONDS.sleep(10);
+                logger.log(Level.INFO, "Checking for reminders...");
+                //executeCommand("help");
+                handleHelp();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, 0, 5, TimeUnit.SECONDS);
     }
 
     public Stage getPrimaryStage() {
@@ -161,10 +180,24 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
+        logger.log(Level.INFO, "handleHelp() called");
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
             helpWindow.focus();
+        }
+        logger.log(Level.INFO, "handleHelp() ended");
+    }
+
+    /**
+     * Opens the reminder window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleRemind() {
+        if (!reminderWindow.isShowing()) {
+            reminderWindow.show();
+        } else {
+            reminderWindow.focus();
         }
     }
 
