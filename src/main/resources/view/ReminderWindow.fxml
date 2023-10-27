@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root resizable="false" title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root resizable="false" title="Reminder" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
         <Image url="@/images/help_icon.png" />
     </icons>
@@ -21,7 +21,7 @@
 
             <HBox alignment="CENTER" fx:id="reminderMessageContainer">
                 <children>
-                    <Label fx:id="reminderMessage" text="Label">
+                    <Label fx:id="reminderMessage" text="Reminder to eat medication, use listToday command to view today's prescriptions.">
                         <HBox.margin>
                             <Insets right="5.0" />
                         </HBox.margin>

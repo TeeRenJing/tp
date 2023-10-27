@@ -1,11 +1,12 @@
 package seedu.address.ui;
 
 import java.io.IOException;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -17,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -32,8 +34,8 @@ public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindowPrescription.fxml";
 
+    private static Timeline timer;
     private final Logger logger = LogsCenter.getLogger(getClass());
-
     private Stage primaryStage;
     private Logic logic;
 
@@ -42,7 +44,6 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ReminderWindow reminderWindow;
-
     @FXML
     private StackPane commandBoxPlaceholder;
 
@@ -57,6 +58,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -76,19 +78,10 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
         reminderWindow = new ReminderWindow();
 
-        ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
-        logger.log(Level.INFO, "Starting reminder thread...");
-        executor.scheduleAtFixedRate(() -> {
-            try {
-                // wait 10 seconds before checking for reminders
-                TimeUnit.SECONDS.sleep(10);
-                logger.log(Level.INFO, "Checking for reminders...");
-                //executeCommand("help");
-                handleHelp();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }, 0, 5, TimeUnit.SECONDS);
+        timer = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            handleRemind();
+        }));
+        timer.play();
     }
 
     public Stage getPrimaryStage() {
@@ -180,13 +173,11 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
-        logger.log(Level.INFO, "handleHelp() called");
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
             helpWindow.focus();
         }
-        logger.log(Level.INFO, "handleHelp() ended");
     }
 
     /**
@@ -194,11 +185,16 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleRemind() {
-        if (!reminderWindow.isShowing()) {
-            reminderWindow.show();
-        } else {
-            reminderWindow.focus();
-        }
+        Platform.runLater(() -> {
+            logger.log(Level.INFO, "handleRemind() called");
+            if (!reminderWindow.isShowing()) {
+                reminderWindow.show();
+            } else {
+                reminderWindow.focus();
+            }
+            logger.log(Level.INFO, "handleRemind() ended");
+            timer.play();
+        });
     }
 
     void show() {

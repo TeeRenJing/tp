@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
@@ -12,7 +13,8 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class ReminderWindow extends UiPart<Stage> {
 
-    public static final String REMINDER_MESSAGE = "Reminder to eat medication";
+    public static final String REMINDER_MESSAGE = "Reminder to eat medication, use listToday command to view today's "
+            + "prescriptions.";
 
     private static final Logger logger = LogsCenter.getLogger(ReminderWindow.class);
     private static final String FXML = "ReminderWindow.fxml";
@@ -27,7 +29,12 @@ public class ReminderWindow extends UiPart<Stage> {
      */
     public ReminderWindow(Stage root) {
         super(FXML, root);
-        //reminderMessage.setText(REMINDER_MESSAGE);
+        root.initModality(Modality.APPLICATION_MODAL);
+        root.setMinWidth(300);
+        root.setMinHeight(50);
+        root.setResizable(false);
+        root.showAndWait();
+        reminderMessage.setText(REMINDER_MESSAGE);
     }
 
     /**
