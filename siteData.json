@@ -116,8 +116,11 @@
       "title": "User Guide",
       "headings": {
         "baymeds-v-2103-user-guide": "BayMeds v.2103 User Guide",
+        "welcome-to-the-baymeds-user-guide": "Welcome to the BayMeds User Guide!",
         "what-is-baymeds": "What is BayMeds?",
         "what-can-i-do-with-baymeds": "What can I do with BayMeds?",
+        "table-of-contents": "Table of Contents",
+        "how-to-use-this-guide": "How to use this guide",
         "quick-start": "Quick start",
         "features": "Features",
         "adding-a-prescription-add": "Adding a prescription : add",
