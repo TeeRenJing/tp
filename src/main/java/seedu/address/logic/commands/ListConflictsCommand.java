@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
@@ -24,7 +25,8 @@ public class ListConflictsCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PRESCRIPTION_SUCCESS = "Here are the conflicting drugs.";
+    public static final String MESSAGE_SUCCESS = "Here are the conflicting drugs.";
+    public static final String MESSAGE_EMPTY_LIST = "There are no conflicting drugs.";
 
 
     private final Index targetIndex;
@@ -48,10 +50,15 @@ public class ListConflictsCommand extends Command {
 
         Prescription prescriptionToListConflicts = lastShownList.get(targetIndex.getZeroBased());
         StringBuilder conflictingDrugsString = new StringBuilder();
-        for (Name drug : prescriptionToListConflicts.getConflictingDrugs()) {
+        Set<Name> conflictingDrugs = prescriptionToListConflicts.getConflictingDrugs();
+        if (conflictingDrugs.isEmpty()) {
+            return new CommandResult(MESSAGE_EMPTY_LIST);
+        }
+
+        for (Name drug : conflictingDrugs) {
             conflictingDrugsString.append(drug.toString() + "\n");
         }
-        return new CommandResult(MESSAGE_DELETE_PRESCRIPTION_SUCCESS + "\n" + conflictingDrugsString.toString());
+        return new CommandResult(MESSAGE_SUCCESS + "\n" + conflictingDrugsString.toString());
     }
 
     @Override

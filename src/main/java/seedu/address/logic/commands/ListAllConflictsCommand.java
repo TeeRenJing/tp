@@ -22,9 +22,8 @@ public class ListAllConflictsCommand extends Command {
             + "medications from all prescriptions\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Listed all conflicting medications.";
-
-    public static final String MESSAGE_EMPTY_LIST = "No prescriptions found.";
+    public static final String MESSAGE_SUCCESS = "Listed all conflicting drugs.";
+    public static final String MESSAGE_EMPTY_LIST = "There are no conflicting drugs.";
 
     @Override
     public CommandResult execute(Model model) {
