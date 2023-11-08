@@ -51,6 +51,7 @@
         "storage-component": "Storage component",
         "common-classes": "Common classes",
         "implementation": "Implementation",
+        "ui": "UI",
         "add-feature": "Add feature",
         "edit-feature": "Edit feature",
         "take-untake-feature": "Take / untake feature",
