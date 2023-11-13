@@ -140,5 +140,12 @@ h3,
 h4,
 h5,
 h6 {
-  color: #e46c0a;
+color: #2b6777;
+}
+
+.hljs.inline.no-lang,
+code.hljs {
+color: #2b6777;
+background-color: #c8d8e4;
+border-radius: 0.5em;
 }

@@ -3,6 +3,7 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
+skinparam DefaultFontSize 24
 
 Model "1" --- "1" PrescriptionsList
 PrescriptionsList "1" --- "*" Prescription

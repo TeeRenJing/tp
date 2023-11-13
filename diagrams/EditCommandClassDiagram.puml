@@ -22,6 +22,7 @@ class EditPrescriptionDescriptor {
   - consumptionCount: ConsumptionCount
   - isCompleted: Boolean
   - note: Note
+  - conflictingDrugs: Set<Drug>
   -------------------
   + EditPrescriptionDescriptor()
   + isAnyFieldEdited(): boolean
@@ -35,6 +36,7 @@ class EditPrescriptionDescriptor {
   + setConsumptionCount(consumptionCount: ConsumptionCount)
   + setIsCompleted(isCompleted: Boolean)
   + setNote(note: Note)
+    + setConflictingDrugs(conflictingDrugs: Set<Drug>)
 }
 
 EditCommand "1" -- "1" EditPrescriptionDescriptor : has

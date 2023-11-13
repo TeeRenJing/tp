@@ -57,8 +57,6 @@
         "take-untake-feature": "Take / untake feature",
         "list-today-feature": "List today feature",
         "list-completed-feature": "List completed feature",
-        "find-feature": "Find feature",
-        "remind-prescription-feature": "Remind prescription feature",
         "check-prescription-interaction-feature": "Check prescription interaction feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
@@ -137,8 +135,6 @@
         "how-to-list-all-conflicting-drugs-listallconflicts": "How to list all conflicting drugs : listAllConflicts",
         "how-to-view-help-help": "How to view help : help",
         "how-to-exit-baymeds-exit": "How to exit BayMeds : exit",
-        "saving-the-data": "Saving the data",
-        "editing-the-data-file": "Editing the data file",
         "faq": "FAQ",
         "known-issues": "Known issues",
         "command-summary": "Command summary"

@@ -1,4 +1,5 @@
 @startuml TakeCommandClassDiagram
+skinparam DefaultFontSize 24
 
 class TakeCommand {
   - targetIndex: Index

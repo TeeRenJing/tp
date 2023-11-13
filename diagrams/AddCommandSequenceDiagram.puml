@@ -1,6 +1,7 @@
 @startuml
 !include style.puml
 skinparam ArrowFontStyle plain
+skinparam DefaultFontSize 24
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
@@ -14,7 +15,7 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("add mn/Propranolol d/4 f/Daily ed/20/01/2024")
+[-> LogicManager : execute("add mn/Propranolol")
 activate LogicManager
 
 LogicManager -> PrescriptionListParser : parseCommand(inputCommand)
