@@ -33,7 +33,7 @@ PrescriptionList .up.|> ReadOnlyPrescriptionList
 ModelManager .up.|> Model
 Model .right.> ReadOnlyUserPrefs
 Model .left.> ReadOnlyPrescriptionList
-ModelManager -left-> "1" PrescriptionList
+ModelManager -left-> "2" PrescriptionList
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
