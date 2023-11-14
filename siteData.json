@@ -69,7 +69,8 @@
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
         "deleting-a-medication": "Deleting a medication",
-        "saving-data": "Saving data"
+        "saving-data": "Saving data",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },
@@ -138,6 +139,7 @@
         "how-to-exit-baymeds-exit": "How to exit BayMeds : exit",
         "faq": "FAQ",
         "known-issues": "Known issues",
+        "glossary": "Glossary",
         "command-summary": "Command summary"
       },
       "headingKeywords": {}
