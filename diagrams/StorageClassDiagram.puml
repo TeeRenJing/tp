@@ -17,10 +17,19 @@ Class StorageManager
 
 package "PrescriptionList Storage" #F4F6F6{
 Class "<<interface>>\nPrescriptionListStorage" as PrescriptionListStorage
-Class JsonPrescriptionStorage
+Class JsonPrescriptionListStorage
 Class JsonSerializablePrescriptionList
+}
+
+package "Prescription Storage" #F4F6F6 {
 Class JsonAdaptedPrescription
 Class JsonAdaptedDrug
+}
+
+package "CompletedPrescriptionList Storage" #F4F6F6 {
+Class "<<interface>>\nCompletedPrescriptionListStorage" as CompletedPrescriptionListStorage
+Class JsonCompletedPrescriptionListStorage
+Class JsonSerializableCompletedPrescriptionList
 }
 
 }
@@ -31,14 +40,22 @@ HiddenOutside ..> Storage
 StorageManager .up.|> Storage
 StorageManager -up-> "1" UserPrefsStorage
 StorageManager -up-> "1" PrescriptionListStorage
+StorageManager -up-> "1" CompletedPrescriptionListStorage
 
 Storage -left-|> UserPrefsStorage
 Storage -right-|> PrescriptionListStorage
+Storage -right-|> CompletedPrescriptionListStorage
 
 JsonUserPrefsStorage .up.|> UserPrefsStorage
+
 JsonPrescriptionListStorage .up.|> PrescriptionListStorage
 JsonPrescriptionListStorage ..> JsonSerializablePrescriptionList
 JsonSerializablePrescriptionList --> "*" JsonAdaptedPrescription
+
+JsonCompletedPrescriptionListStorage .up.|> CompletedPrescriptionListStorage
+JsonCompletedPrescriptionListStorage ..> JsonSerializableCompletedPrescriptionList
+JsonSerializableCompletedPrescriptionList --> "*" JsonAdaptedPrescription
+
 JsonAdaptedPrescription --> "*" JsonAdaptedDrug
 
 @enduml
